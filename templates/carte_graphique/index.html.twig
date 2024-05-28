@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarteGraphique index
+{% endblock %}
+
+{% block body %}
+	<div class="composant cartegraphique">
+		<h1>Liste des cartes graphiques</h1>
+
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			{% for carte_graphique in carte_graphiques|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+
+				<div class="col">
+					<div class="card h-100">
+						<img src="{{ asset ('uploads/images/') }}{{ carte_graphique.photo ? carte_graphique.photo : "nc.png" }}" class="card-img-top" alt="...">
+						<div class="card-body text-center text-dark">
+							<h5 class="card-title">{{ carte_graphique.marque.nom|upper }}
+							</h5>
+							<p>{{ carte_graphique.modele }}</p>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">Mémoire :
+									{{ carte_graphique.memoire }}
+									Go</li>
+								<li class="list-group-item">Longueur :
+									{{ carte_graphique.longueur }}
+									mm</li>
+								<li class="list-group-item">Port :
+									{{ carte_graphique.pcie.nom}}
+								</li>
+								<li class="list-group-item">Actif :
+									{{ carte_graphique.isactive ? "Oui" : "Non" }}</li>
+								<li class="list-group-item">Prix :
+									{{ carte_graphique.prix }}
+									€</li>
+							</ul>
+
+						</div>
+						<div class="card-body text-center">
+							<a href="{{ path('app_carte_graphique_show', {'id': carte_graphique.id}) }}" class="btn btn-light btn-crud">afficher</a>
+							<a href="{{ path('app_carte_graphique_edit', {'id': carte_graphique.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</div>
+					</div>
+				</div>
+		{% else %}
+			</div>
+		{% endfor %}
+	</div>
+	<div class="text-center">
+		<a href="{{ path('app_carte_graphique_new') }}" class="btn btn-primary btn-create bg-perso">Nouvelle carte grapphique</a>
+	</div>
+
+
+{% endblock %}

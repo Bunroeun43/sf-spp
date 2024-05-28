@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Memoire index
+{% endblock %}
+
+{% block body %}
+	<div class="page memoire">
+		<h1>Memoire index</h1>
+
+		<div class="row row-cols-1 row-cols-md-4 g-4">
+
+			{% for memoire in memoires|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+				<div class="col">
+					<div class="card h-100 mb-3 text-dark" style="max-width: 300px;">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img src="{{ asset ('uploads/images/') }}{{ memoire.photo ? memoire.photo : "nc.png" }}" class="img-fluid rounded-start" alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title text-center">{{ memoire.marque.nom|upper }}
+										<p class="fs-6">{{ memoire.modele }}</p>
+									</h5>
+									<p class="card-text">Type :
+										{{ memoire.typememoire.nom }}</p>
+									<p class="card-text">Capacité :
+										{{ memoire.taille }}
+										Go</p>
+									<p class="card-text">
+										<small class="text-muted">Prix :
+											{{ memoire.prix }}
+											€</small>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		{% else %}
+			</div>
+		{% endfor %}
+	</div>
+	<a href="{{ path('app_memoire_new') }}" class="btn btn-primary btn-create">Nouvelle mémoire</a>
+
+{% endblock %}

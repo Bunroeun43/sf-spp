@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormatCarteMere index
+{% endblock %}
+
+{% block body %}
+	<div class="page formatcartemere">
+		<h1>FormatCarteMere index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for format_carte_mere in format_carte_meres|sort((a, b) => a.nom <=> b.nom) %}
+
+					<tr>
+						<td>{{ format_carte_mere.id }}</td>
+						<td>{{ format_carte_mere.nom }}</td>
+						<td>
+							<a href="{{ path('app_format_carte_mere_show', {'id': format_carte_mere.id}) }}" class="btn btn-light btn-crud">afficher</a>
+							<a href="{{ path('app_format_carte_mere_edit', {'id': format_carte_mere.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_format_carte_mere_new') }}">Create new</a>
+	</div>
+
+{% endblock %}

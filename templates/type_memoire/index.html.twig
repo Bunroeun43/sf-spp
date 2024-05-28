@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des types de mémoires
+{% endblock %}
+
+{% block body %}
+	<div class="page typememoire">
+		<h1>Liste des types de mémoires</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for type_memoire in type_memoires|sort((a, b) => a.nom <=> b.nom) %}
+
+					<tr>
+						<td>{{ type_memoire.id }}</td>
+						<td>{{ type_memoire.nom }}</td>
+						<td>
+							<a href="{{ path('app_type_memoire_show', {'id': type_memoire.id}) }}" class="btn btn-light btn-crud">afficher</a>
+							<a href="{{ path('app_type_memoire_edit', {'id': type_memoire.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_type_memoire_new') }}">Create new</a>
+	</div>
+
+{% endblock %}

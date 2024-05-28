@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pcie
+{% endblock %}
+
+{% block body %}
+	<div class="page pcie">
+		<h1>Create new Pcie</h1>
+
+		{{ include('pcie/_form.html.twig') }}
+
+		<a href="{{ path('app_pcie_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

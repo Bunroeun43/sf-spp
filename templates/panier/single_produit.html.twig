@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+
+{% block body %}
+	<div class="page singleproduit">
+		<h1>CarteMere</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Contenu</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Montant</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Slotmemoire</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>M2</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Sata</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Wifi</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Bluetooth</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Rj45</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Prix</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Photo</th>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="#">back to list</a>
+
+		<a href="#">edit</a>
+
+		{# {{ include('carte_mere/_delete_form.html.twig') }} #}
+	</div>
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<button class="btn">{{ button_label|default('Save') }}</button>
+	{{ form_end(form) }}
+
+{% endblock %}

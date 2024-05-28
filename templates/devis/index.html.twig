@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DevisController!
+{% endblock %}
+
+{% block body %}
+	<div class="page">
+		<div class="pagedevis">
+			<h1>liste de mes devis</h1>
+			<table class="table">
+				<tr>
+					<th>Numéro du devis</th>
+					<th>Nom de la configuration</th>
+					<th>actions</th>
+				</tr>
+				{% for configurateur in configurateurs %}
+					<tr>
+						<td>{{ configurateur.id }}</td>
+						<td>{{ configurateur.nom }}</td>
+						<td>
+							<a href="{{ path ('app_devis_show', {'id': configurateur.id}) }}" class="btn btn-light btn-crud">afficher</a>
+							<a href="{{ path ('app_configurateur_edit', {'id': configurateur.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</td>
+					</tr>
+					{% else %}
+				{% endfor %}
+			</table>
+		</div>
+
+	</div>
+{% endblock %}

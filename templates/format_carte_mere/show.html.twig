@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormatCarteMere
+{% endblock %}
+
+{% block body %}
+	<div class="page formatcartemere">
+		<h1>FormatCarteMere</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ format_carte_mere.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ format_carte_mere.nom }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_format_carte_mere_index') }}" class="btn btn-primary">retour à la liste</a>
+
+		<a href="{{ path('app_format_carte_mere_edit', {'id': format_carte_mere.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+
+		{{ include('format_carte_mere/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

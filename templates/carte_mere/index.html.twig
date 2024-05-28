@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des cartes mères
+
+{% endblock %}
+
+{% block body %}
+	<div class="composant cartemere bg-perso">
+		<h1>Liste des cartes mères</h1>
+
+		<div class="row row-cols-1 row-cols-md-4 g-4">
+			{% for carte_mere in carte_meres|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img src="{{ asset('uploads/images/') }}{{ carte_mere.photo ? carte_mere.photo : "nc.png" }}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title text-center text-dark">{{ carte_mere.marque.nom|upper }}
+								<p>{{ carte_mere.modele|capitalize }}</p>
+							</h5>
+							{# <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> #}
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Socket :
+								{{ carte_mere.socket.marque.nom }}
+								{{ carte_mere.socket.nom }}</li>
+							<li class="list-group-item">Type de mémoire :
+								{{ carte_mere.typememoire.nom }}</li>
+							<li class="list-group-item">PCI-E 1 :
+								{{ carte_mere.pcie1.nom }}</li>
+							<li class="list-group-item">PCI-E 2 :
+								{{ carte_mere.pcie2.nom }}</li>
+							<li class="list-group-item">PCI-E 3 :
+								{{ carte_mere.pcie3.nom }}
+							</li>
+						</li>
+						<li class="list-group-item">Bluetooth :
+							{{ carte_mere.bluetooth ? "Oui" : "Non" }}</li>
+						<li class="list-group-item">M2 :
+							{{ carte_mere.m2 ? "Oui" : "Non" }}</li>
+						<li class="list-group-item">Wifi :
+							{{ carte_mere.wifi ? "Oui" : "Non" }}</li>
+						<li class="list-group-item">Format :
+							{{ carte_mere.format.nom }}</li>
+						<li class="list-group-item">Prix :
+							{{ carte_mere.prix }}
+							€</li>
+					</ul>
+					<div class="card-body text-center">
+						<a href="{{ path('app_carte_mere_show', {'id': carte_mere.id}) }}" class="btn btn-light btn-crud">Afficher</a>
+						<a href="{{ path('app_carte_mere_edit', {'id': carte_mere.id}) }}" class="btn btn-warning btn-crud">Modifier</a>
+					</div>
+				</div>
+			</div>
+	{% else %}
+		</div>
+	{% endfor %}
+</div>
+<div class="text-center">
+	<a href="{{ path('app_carte_mere_new') }}" class="btn btn-primary btn-create bg-perso">Nouvelle carte mère</a>
+</div>{% endblock %}

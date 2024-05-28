@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un nouveau boitier
+
+{% endblock %}
+
+{% block body %}
+	<div class="page boitier">
+		<h1>Créer un nouveau boitier</h1>
+
+		{{ include('boitier/_form.html.twig') }}
+
+		<a href="{{ path('app_boitier_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

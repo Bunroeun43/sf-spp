@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Processeur index
+{% endblock %}
+
+{% block body %}
+	<div class="page processeur">
+		<h1>Processeur index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Marque</th>
+					<th>Modele</th>
+					<th>Coeur</th>
+					<th>Cache</th>
+					<th>Frequence</th>
+					<th>Scoket</th>
+					<th>Type Mémoire</th>
+					<th>Prix</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for processeur in processeurs|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+
+					<tr>
+						<td>{{ processeur.id }}</td>
+						<td>{{ processeur.marque.nom }}</td>
+						<td>{{ processeur.modele }}</td>
+						<td>{{ processeur.coeur }}</td>
+						<td>{{ processeur.cache }}
+							Mo</td>
+						<td>{{ processeur.frequence }}
+							Ghz</td>
+						<td>{{ processeur.socket.nom }}</td>
+						<td>{{ processeur.typememoire.nom }}</td>
+						<td>{{ processeur.prix }}
+							€</td>
+						<td>
+							<a href="{{ path('app_processeur_show', {'id': processeur.id}) }}" class="btn btn-secondary btn-crud">afficher</a>
+							<a href="{{ path('app_processeur_edit', {'id': processeur.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_processeur_new') }}" class="btn btn-primary btn-create">Nouveau processeur</a>
+
+	</div>
+
+{% endblock %}

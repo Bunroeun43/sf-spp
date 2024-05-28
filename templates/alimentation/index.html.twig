@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des alimentations
+{% endblock %}
+
+{% block body %}
+	<div class="composant alimentation">
+		<h1>Liste des alimentations</h1>
+
+		<div class="row row-cols- row-cols-md-3 g-4">
+			{% for alimentation in alimentations|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+				<div class="col">
+					<div class="card bg-secondary mb-3 p-3" style="max-width: 540px;">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img src="{{ asset ('uploads/images/') }}{{ alimentation.photo ? alimentation.photo : "nc.png" }}" class="img-fluid rounded-start" alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title text-center">{{ alimentation.marque.nom }}</h5>
+									<p class="card-text text-center">{{ alimentation.modele }}</p>
+									<p class="card-text mb-0">Puissance :
+										{{ alimentation.puissance }}
+										W</p>
+									<p class="card-text mb-0">Modulaire :
+										{{ alimentation.modulaire ? "Oui" : "Non" }}</p>
+									<p class="card-text">Format :
+										{{ alimentation.format.nom }}</p>
+									<p class="card-text text-center">
+										<H4 class="text-center">{{ alimentation.prix }}
+											€</H4>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="text-center">
+							<span class="text-center mx-auto">
+								<a href="{{ path('app_alimentation_show', {'id': alimentation.id}) }}" class="btn btn-light btn-crud">afficher</a>
+								<a href="{{ path('app_alimentation_edit', {'id': alimentation.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+							</span>
+						</div>
+
+					</div>
+				</div>
+				{% else %}
+			{% endfor %}
+		</div>
+
+		<div class="text-center">
+			<a href="{{ path('app_alimentation_new') }}" class="btn btn-primary btn-create bg-perso">Nouvelle alimentation</a>
+		</div>
+
+	</div>
+
+{% endblock %}

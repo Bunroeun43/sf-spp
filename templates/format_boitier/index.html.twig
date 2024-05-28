@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormatBoitier index
+{% endblock %}
+
+{% block body %}
+	<div class="page formatboitier">
+		<h1>FormatBoitier index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for format_boitier in format_boitiers|sort((a, b) => a.nom <=> b.nom) %}
+
+					<tr>
+						<td>{{ format_boitier.id }}</td>
+						<td>{{ format_boitier.nom }}</td>
+						<td>
+							<a href="{{ path('app_format_boitier_show', {'id': format_boitier.id}) }}" class="btn btn-light btn-crud">afficher</a>
+							<a href="{{ path('app_format_boitier_edit', {'id': format_boitier.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_format_boitier_new') }}" class="btn btn-primary btn-create bg-perso">Create new</a>
+
+	</div>
+
+{% endblock %}

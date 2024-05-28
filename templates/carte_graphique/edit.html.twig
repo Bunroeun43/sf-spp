@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer une carte graphique
+
+{% endblock %}
+
+{% block body %}
+	<div class="page cartegraphique">
+		<h1>Editer une carte graphique</h1>
+
+		{{ include('carte_graphique/_form.html.twig', {'button_label': 'mettre à jour'}) }}
+
+
+		<a href="{{ path('app_carte_graphique_index') }}" class="btn btn-primary">retour à la liste</a>
+
+
+		{{ include('carte_graphique/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs
+{% endblock %}
+
+{% block body %}
+	<div class="page">
+		<h1>Liste des utilisateurs</h1>
+
+
+		<div class="row row-cols-1 row-cols-md-4 g-4">
+			{% for user in users|sort((a, b) => a.nom <=> b.nom) %}
+
+				<div class="col">
+					<div class="card h-100 bg-dark text-light" style="width: 18rem;">
+						<img src="{{ asset ('uploads/images/') }}{{ user.photo ? user.photo : "nc.png" }}" class="card-img-top" alt="..." style="height: 100%;">
+						<div class="card-body">
+							<h5 class="card-title text-center">{{ user.prenom|capitalize }}
+								{{ user.nom|upper }}</h5>
+						</div>
+						<ul class="list-group list-group-flush bg-dark">
+							<li class="list-group-item bg-dark text-light">E-mail :
+								{{ user.email }}</li>
+							{% set nums = user.telephone %}
+							{% set nums = nums|split('', 2) %}
+							<li class="list-group-item bg-dark text-light">Téléphone :
+								{% for num in nums %}
+									{{ num }}
+								{% endfor %}
+							</li>
+							<li class="list-group-item bg-dark text-light">Date de naissance :
+								{{ user.naissance|date('d/m/Y') }}</li>
+						</ul>
+						<div class="card-body text-center">
+							<a href="{{ path('app_user_show', {'id': user.id}) }}" class="card-link btn btn-light bg-perso btn-crud">afficher</a>
+							<a href="{{ path('app_user_edit', {'id': user.id}) }}" class="card-link btn btn-warning bg-perso btn-crud">modifier</a>
+						</div>
+					</div>
+				</div>
+				{% else %}
+			{% endfor %}
+		</div>
+		<a href="{{ path('app_user_new') }}" class="btn btn-primary btn-create bg-perso">Nouvel utilisateur</a>
+	</div>{# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}{% endblock %}

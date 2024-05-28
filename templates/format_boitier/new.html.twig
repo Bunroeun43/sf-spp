@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FormatBoitier
+{% endblock %}
+
+{% block body %}
+	<div class="page formatboitier">
+		<h1>Create new FormatBoitier</h1>
+
+		{{ include('format_boitier/_form.html.twig') }}
+
+		<a href="{{ path('app_format_boitier_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

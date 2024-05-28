@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une nouvelle configuration
+{% endblock %}
+
+{% block body %}
+	<div class="page alimentation">
+		<h1>Créer une nouvelle configuration</h1>
+
+		{{ include('configurateur/_form.html.twig') }}
+
+		<a href="{{ path('app_configurateur_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+		<script src="{{ asset ('js/jquery.min.js') }}" crossorigin="anonymous"></script>
+		<script src="{{ asset ('js/configurateur.js') }}"></script>
+
+	</div>
+
+{% endblock %}

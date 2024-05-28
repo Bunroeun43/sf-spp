@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des disques Durs
+{% endblock %}
+
+{% block body %}
+	<div class="page hdd">
+		<h1>Liste des disques Durs</h1>
+
+		<div class="row row-cols- row-cols-md-3 g-4">
+			{% for disque_dur in disque_durs|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+				<div class="col">
+					<div class="card mb-3" style="max-width: 540px;">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img src="{{ asset ('uploads/images/') }}{{ disque_dur.photo ? disque_dur.photo : "nc.png" }}" class="img-fluid rounded-start" alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body text-dark">
+									<h5 class="card-title text-center">{{ disque_dur.marque.nom }}</h5>
+									<p class="card-text text-center">{{ disque_dur.modele }}</p>
+									<p class="card-text mb-0">Capacité :
+										{{ disque_dur.capacite }}
+										Go</p>
+									<p class="card-text mb-0">Format :
+										{{ disque_dur.format ? disque_dur.format.nom : "NC" }}"</p>
+									<p class="card-text mb-0">Activé :
+										{{ disque_dur.isactive ? "Oui" : "Non" }}</p>
+									<p class="card-text text-center">
+										<H4 class="text-center">Prix :
+											{{ disque_dur.prix }}
+											€</H4>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="text-center">
+							<span class="text-center mx-auto">
+								<a href="{{ path('app_disque_dur_show', {'id': disque_dur.id}) }}" class="btn btn-light btn-crud">afficher</a>
+								<a href="{{ path('app_disque_dur_edit', {'id': disque_dur.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+							</span>
+						</div>
+
+					</div>
+				</div>
+				{% else %}
+			{% endfor %}
+		</div>
+
+		<div class="text-center">
+			<a href="{{ path('app_disque_dur_new') }}" class="btn btn-primary btn-create bg-perso">nouveau disque dur</a>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des pays
+{% endblock %}
+
+{% block body %}
+	<div class="page pays">
+		<h1>Liste des pays</h1>
+
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			{% for pay in pays|sort((a, b) => a.nom <=> b.nom) %}
+
+				<div class="col">
+					<div class="card bg-secondary">
+						<img src="{{ asset ('uploads/images/') }}{{ pay.photo ? pay.photo : "nc.png" }}" class="card-img-top" style="height: 300px;" alt="...">
+						<div class="card-body">
+							<h5 class="card-title text-center text-light">{{ pay.nom }}</h5>
+							{# <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> #}
+							<p class="text-center">
+								<a href="{{ path('app_pays_show', {'id': pay.id}) }}" class="btn btn-crud btn-light">afficher</a>
+								<a href="{{ path('app_pays_edit', {'id': pay.id}) }}" class="btn btn-crud btn-warning">modifier</a>
+							</p>
+						</div>
+					</div>
+				</div>
+		{% else %}
+			</div>
+		{% endfor %}
+
+	</div>
+	<a href="{{ path('app_pays_new') }}" class="btn btn-primary btn-create">Create new</a>
+
+{% endblock %}

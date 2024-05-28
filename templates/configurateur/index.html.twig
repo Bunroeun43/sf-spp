@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des configurations
+{% endblock %}
+
+{% block body %}
+	<div class="configurateur">
+		<h1>Liste des configurations</h1>
+
+		<div class="row row-cols-1 row-cols-md-4 g-4">
+			{% for configurateur in configurateurs|sort((a, b) => a.nom <=> b.nom) %}
+
+				<div class="col">
+					<div class="card h-100" style="width: 18rem;">
+						<img src="{{ asset ('img/pic/composant.png') }}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title text-center">{{ configurateur.nom }}</h5>
+
+							<p class="card-text text-center bg-" {{ configurateur.isactive ? " primary" : " danger" }}>Devis soumis :
+								{{ configurateur.isactive ? "Oui" : "Non" }}</p>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">CM :
+								{{ configurateur.cartemere.marque.nom|upper}}
+								{{ configurateur.cartemere.modele }}</li>
+							<li class="list-group-item">CPU :
+								{{ configurateur.processeur.marque.nom|upper }}
+								{{ configurateur.processeur.modele }}</li>
+							<li class="list-group-item">RAM :
+								{{ configurateur.typememoire.marque.nom|upper }}
+								{{ configurateur.typememoire.modele }}</li>
+							<li class="list-group-item">CG :
+								{{ configurateur.cartegraphique.marque.nom|upper }}
+								{{ configurateur.cartegraphique.modele }}</li>
+						</ul>
+						<div class="card-body text-center">
+							<a href="{{ path('app_configurateur_user_show', {'id': configurateur.id}) }}" class="btn btn-light btn-crud">devis</a>
+							<a href="{{ path('app_configurateur_user_edit', {'id': configurateur.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</div>
+					</div>
+				</div>
+				{% else %}
+			{% endfor %}
+		</div>
+
+	</div>
+	<script src="{{ asset ('js/prix.js') }}"></script>
+{% endblock %}

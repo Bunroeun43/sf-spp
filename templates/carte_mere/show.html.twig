@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carte mère
+{% endblock %}
+
+{% block body %}
+	<div class="page cartemere">
+		<h1>Carte mère</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ carte_mere.id }}</td>
+				</tr>
+				<tr>
+					<th>Modele</th>
+					<td>{{ carte_mere.modele }}</td>
+				</tr>
+				<tr>
+					<th>Slotmemoire</th>
+					<td>{{ carte_mere.slotmemoire }}</td>
+				</tr>
+				<tr>
+					<th>M2</th>
+					<td>{{ carte_mere.m2 ? 'Yes' : 'No' }}</td>
+				</tr>
+				<tr>
+					<th>Sata</th>
+					<td>{{ carte_mere.sata }}</td>
+				</tr>
+				<tr>
+					<th>Wifi</th>
+					<td>{{ carte_mere.wifi ? 'Yes' : 'No' }}</td>
+				</tr>
+				<tr>
+					<th>Bluetooth</th>
+					<td>{{ carte_mere.bluetooth ? 'Yes' : 'No' }}</td>
+				</tr>
+				<tr>
+					<th>Rj45</th>
+					<td>{{ carte_mere.rj45 }}</td>
+				</tr>
+				<tr>
+					<th>Prix</th>
+					<td>{{ carte_mere.prix }}</td>
+				</tr>
+				<tr>
+					<th>Photo</th>
+					<td>{{ carte_mere.photo }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_carte_mere_index') }}" class="btn btn-primary">retour à la liste</a>
+
+		<a href="{{ path('app_carte_mere_edit', {'id': carte_mere.id}) }}" class="btn btn-warning">modifier</a>
+
+		{{ include('carte_mere/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

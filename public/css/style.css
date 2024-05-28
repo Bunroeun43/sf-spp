@@ -1,0 +1,415 @@
+
+
+body {
+  background-image: url('../img/wallpaper/wallpaper_watercoolong_red.jpg');
+}
+
+main {
+  min-height: 90vh;
+}
+
+#logo {
+  display: flex;
+  flex-direction: row;
+}
+
+#logo img {
+  width: 10vw;
+}
+
+
+
+/*===============*/
+#nav-down {
+  margin-top: 5vh;
+  margin-bottom: 0;
+}
+
+/* CSS */
+.bg-perso {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  /* background: #111; */
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.bg-perso:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-bg-perso 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-bg-perso {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.bg-perso:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  /* border-radius: 10px; */
+}
+
+.bg-perso-trans {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: rgb(45, 144, 2);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.bg-perso-trans:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-bg-perso-trans 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-bg-perso-trans {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.bg-perso-trans:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  /* border-radius: 10px; */
+}
+
+
+/*========== Page ==========*/
+
+.page {
+    min-width: 40vw;
+    max-width: 80vw;
+    margin: 5vh 10vw auto 10vw;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 2vh 2vw;
+    background-color: rgba(84, 85, 84, 0.9);
+}
+
+.page h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 10vh;
+    text-decoration: underline;
+}
+
+.page table {
+    color: white;
+}
+
+/*========== composant =========*/
+
+.composant h1 {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  color: white;
+}
+
+.composant {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+/*========== composant =========*/
+
+.configurateur h1 {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  color: white;
+}
+
+.configurateur {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+/*========== Boitier ==========*/
+
+.boitier {
+  background-image: url('../img/pic/boitier.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+  padding: 5em;
+}
+
+/*========== cartegraphique ==========*/
+
+.cartegraphique {
+  color: white;
+  background-image: url('../img/logo/cardgpu.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+}
+
+/*========== carte mere ==========*/
+
+.cartemere {
+  color: white;
+  background-image: url('../img/logo/cartemere.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  margin-top: 10vh;
+}
+
+
+
+/*========== Genre ==========*/
+
+.genre {
+  background-image: url('../img/logo/genrepng.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+}
+
+
+/*========== hdd ==========*/
+
+.hdd {
+  color: white;
+  background-image: url('../img/logo/hdd.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+  margin-bottom: 5vh;
+}
+
+
+/*========== m2 ==========*/
+
+.m2 {
+  min-height: 70vh;
+  color: white;
+  background-image: url('../img/logo/ssdm2.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+  margin-bottom: 5vh;
+}
+
+/*========== Marque ==========*/
+
+.marque {
+  color: white;
+  background-image: url('../img/logo/marque.png');
+  background-size: contain;
+  opacity: 0.9;
+  font-weight: bold;
+}
+
+
+/*========== Memoire ==========*/
+
+.memoire {
+  color: white;
+  background-image: url('../img/logo/ram.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+  margin-bottom: 5vh;
+}
+
+
+/*========== Pays ==========*/
+
+.pays {
+  background-image: url('../img/pic/pays.png');
+  background-size: cover;
+  opacity: 0.9;
+  margin-bottom: 5vh;
+}
+
+/*========== Processeur ==========*/
+
+.processeur {
+  background-image: url('../img/logo/cpu.png');
+  background-size: cover;
+  /* background-color: black; */
+  color: black;
+  opacity: 0.9;
+  font-weight: bold;
+  margin-bottom: 5vh;
+}
+
+
+/*========== Taille Ventilateurs ==========*/
+
+.tailleventilateur {
+  background-image: url('../img/pic/ventilateur.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+  margin-bottom: 5vh;
+}
+
+
+/*========== Utilisateur ==========*/
+
+.user {
+  /* background-image: url('../img/logo/Users.png');
+  background-size: contain;
+  opacity: 0.5; */
+  font-weight: bold;
+  margin-bottom: 5vh;
+}
+
+
+
+
+
+/*========== ssd ==========*/
+
+.ssd {
+  color: white;
+  background-image: url('../img/logo/ssd.png');
+  background-size: cover;
+  opacity: 0.9;
+  font-weight: bold;
+}
+
+
+
+
+
+
+.devis {
+  background-color: white;
+  width: 21cm;
+  height: 29.7cm;
+  margin: 5vh auto 5vh auto;
+  padding: 1.5cm;
+}
+
+.client p {
+  margin-bottom: 0.1px;
+}
+
+.devis table {
+  background-image: url('../img/logo/Logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#logo-devis {
+  width: 200px;
+}
+
+
+/*================ buttons ================*/
+/* bouton */
+.btn-create {
+  border: 3px solid gray;
+  border-radius: 20px;
+  margin-top: 2rem;
+  padding: 2px 15px 2px 15px;
+}
+
+.btn-crud {
+  border: 3px solid gray;
+  padding: 2px 15px 2px 15px;
+  border-radius: 20px;
+  /* padding: 0.5em; */
+}
+
+.home {
+  margin-top: 15vh;
+}
+
+#carouselExampleCaptions .carousel-inner .carousel-inner .carousel-item img {
+  width: 50px;
+}

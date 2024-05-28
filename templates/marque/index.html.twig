@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des marques
+
+{% endblock %}
+
+{% block body %}
+	<div class="page marque">
+		<h1>Liste des marques</h1>
+
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			{% for marque in marques|sort((a, b) => a.nom <=> b.nom) %}
+
+				<div class="col">
+					<div class="card bg-secondary">
+						<img src="{{ asset ('uploads/images/') }}{{ marque.photo ? marque.photo : "nc.png" }}" class="card-img-top" style="height: 300px;" alt="...">
+						<div class="card-body">
+							<h5 class="card-title text-center text-light">{{ marque.nom }}
+								<p>
+									<span class="fw-lighter fs-6 text-end">Origine :
+										{{ marque.pays.nom }}</span>
+								</p>
+
+							</h5>
+							{# <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> #}
+							<p class="text-center">
+								<a href="{{ path('app_marque_show', {'id': marque.id}) }}" class="btn btn-crud btn-light">afficher</a>
+								<a href="{{ path('app_marque_edit', {'id': marque.id}) }}" class="btn btn-crud btn-warning">modifier</a>
+							</p>
+						</div>
+					</div>
+				</div>
+		{% else %}
+			</div>
+		{% endfor %}
+
+
+	</div>
+	<div class="text-center">
+		<a href="{{ path('app_marque_new') }}" class="btn btn-primary btn-create bg-perso">Nouvelle marque</a>
+	</div>
+
+{% endblock %}

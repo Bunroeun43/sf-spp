@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}nouveau disque SSD
+{% endblock %}
+
+{% block body %}
+	<div class="page ssd">
+		<h1>Créer nouveau disque SSD</h1>
+
+		{{ include('disque_ssd/_form.html.twig') }}
+
+		<a href="{{ path('app_disque_ssd_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

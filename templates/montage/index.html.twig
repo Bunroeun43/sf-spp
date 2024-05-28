@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Montage index
+{% endblock %}
+
+{% block body %}
+	<div class="page">
+		<h1>Montage index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Main d'oeuvre</th>
+					<th>Tva</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for montage in montages %}
+					<tr>
+						<td>{{ montage.id }}</td>
+						<td>{{ montage.frais }}</td>
+						<td>{{ montage.tva }}</td>
+						<td>
+							<a href="{{ path('app_montage_show', {'id': montage.id}) }}" class="btn btn-light btn-crud">afficher</a>
+							<a href="{{ path('app_montage_edit', {'id': montage.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_montage_new') }}" class="btn btn-create btn-crud bg-perso">Create new</a>
+	</div>
+
+{% endblock %}

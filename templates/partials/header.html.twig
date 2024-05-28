@@ -1,0 +1,140 @@
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-perso-trans">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="{{ path ('app_home') }}">Accueil</a>
+					</li>
+					{% if app.user %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								client
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+								<li>
+									<a class="dropdown-item" href="{{ path ('app_user_edit_user', {'id': app.user.id}) }}">mon profil</a>
+
+
+								</li>
+								<li><hr class="dropdown-divider"></li>
+								<li>
+									<a class="dropdown-item" href="{{ path ('app_configurateur_user_index') }}">mes configurations</a>
+								</li>
+							</ul>
+						</li>
+						{% if is_granted("ROLE_ADMIN") %}
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									gérant
+								</a>
+								<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_alimentation_index') }}">gestion des alimentations</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_boitier_index') }}">gestion des boitiers</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_carte_graphique_index') }}">gestion des cartes graphiques</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_carte_mere_index') }}">gestion des cartes mères</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_disque_dur_index') }}">gestion des disques dur</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_disque_m2_index') }}">gestion disque m2</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_disque_ssd_index') }}">gestion des disques SSD</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_genre_index') }}">gestion des genres</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_marque_index') }}">gestion des marques</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_memoire_index') }}">gestion de la mémoire</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_pays_index') }}">gestion des pays</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_processeur_index') }}">gestion des processeurs</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_user_index') }}">gestion des utilisateurs</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_societe_index') }}">info de la société</a>
+									</li>
+									<li><hr class="dropdown-divider"></li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_montage_index') }}">facturation</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path ('app_configurateur_index') }}">gestion des configurations</a>
+									</li>
+								</li>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							développeur
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+							<li>
+								<a class="dropdown-item" href="{{ path ('app_socket_index') }}">gestion des sockets</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path ('app_type_memoire_index') }}">gestion type de mémoire</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path ('app_format_carte_mere_index') }}">gestion format des cartes mères</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path ('app_pcie_index') }}">gestion pcie</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path ('app_format_boitier_index') }}">gestion des formats boitiers</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path ('app_format_alimentation_index') }}">gestion des formats alimentations</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">gestion des couleurs</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">gestion des tailles de ventilateurs</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path ('app_format_disque_index') }}">gestion des formats disques</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="#">Something else here</a>
+							</li>
+						</ul>
+					</li>
+				{% endif %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path ('app_logout') }}">déconnexion</a>
+				</li>
+			{% else %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path ('app_login') }}">connexion</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path ('app_register') }}">s'enregistrer</a>
+				</li>
+			{% endif %}
+		</ul>
+		<a class="nav-link" href="{{ path ('app_configurateur_new') }}">configurateur</a>
+	</div>
+</div></nav>{# <div id="logo">
+																																							<a href="{{ path ('app_home') }}"><img src="{{ asset ('img/logo/Logo.png') }}" alt="" text="Accueil"></a>
+																																						</div> #}</header><main>

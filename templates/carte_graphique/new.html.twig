@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une nouvelle carte graphique
+
+{% endblock %}
+
+{% block body %}
+	<div class="page cartegraphique">
+		<h1>Créer une nouvelle carte graphique</h1>
+
+		{{ include('carte_graphique/_form.html.twig') }}
+
+		<a href="{{ path('app_carte_graphique_index') }} class=" btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{% if app.user %}
+	<button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+
+{% endif %}
+{{ form_end(form) }}

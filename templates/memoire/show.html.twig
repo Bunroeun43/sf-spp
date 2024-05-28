@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Memoire
+{% endblock %}
+
+{% block body %}
+	<div class="page memoire">
+		<h1>Memoire</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ memoire.id }}</td>
+				</tr>
+				<tr>
+					<th>Modele</th>
+					<td>{{ memoire.modele }}</td>
+				</tr>
+				<tr>
+					<th>Taille</th>
+					<td>{{ memoire.taille }}</td>
+				</tr>
+				<tr>
+					<th>Photo</th>
+					<td>{{ memoire.photo }}</td>
+				</tr>
+				<tr>
+					<th>Prix</th>
+					<td>{{ memoire.prix }}</td>
+				</tr>
+				<tr>
+					<th>IsActive</th>
+					<td>{{ memoire.isActive ? 'Yes' : 'No' }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_memoire_index') }}" class="btn btn-primary">retour à la liste</a>
+
+		<a href="{{ path('app_memoire_edit', {'id': memoire.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+
+		{{ include('memoire/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

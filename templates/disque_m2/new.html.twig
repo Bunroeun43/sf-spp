@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New DisqueM2
+{% endblock %}
+
+{% block body %}
+	<div class="page m2">
+		<h1>Create new DisqueM2</h1>
+
+		{{ include('disque_m2/_form.html.twig') }}
+
+		<a href="{{ path('app_disque_m2_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

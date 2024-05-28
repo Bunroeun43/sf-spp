@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste disques M2
+{% endblock %}
+
+{% block body %}
+	<div class="page m2">
+		<h1>Liste disques M2</h1>
+
+		<div class="row row-cols- row-cols-md-3 g-4">
+			{% for disque_m2 in disque_m2s|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+				<div class="col">
+					<div class="card mb-3" style="max-width: 540px;">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img src="{{ asset ('uploads/images/') }}{{ disque_m2.photo ? disque_m2.photo : "nc.png" }}" class="img-fluid rounded-start" alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body text-dark">
+									<h5 class="card-title text-center">{{ disque_m2.marque.nom }}</h5>
+									<p class="card-text text-center">{{ disque_m2.modele }}</p>
+									<p class="card-text mb-0">Capacité :
+										{{ disque_m2.capacite }}
+										Go</p>
+									<p class="card-text mb-0">Activé :
+										{{ disque_m2.isactive ? "Oui" : "Non" }}</p>
+									<p class="card-text text-center">
+										<H4 class="text-center">Prix :
+											{{ disque_m2.prix }}
+											€</H4>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="text-center mb-3">
+							<span class="text-center mx-auto">
+								<a href="{{ path('app_disque_m2_show', {'id': disque_m2.id}) }}" class="btn btn-light btn-crud">afficher</a>
+								<a href="{{ path('app_disque_m2_edit', {'id': disque_m2.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+							</span>
+						</div>
+
+					</div>
+				</div>
+				{% else %}
+			{% endfor %}
+		</div>
+
+		<div class="text-center">
+			<a href="{{ path('app_disque_m2_new') }}" class="btn btn-primary btn-create bg-perso">Nouveau disque m2</a>
+		</div>
+	</div>
+
+{% endblock %}

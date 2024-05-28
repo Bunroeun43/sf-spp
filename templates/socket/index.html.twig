@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Socket index
+{% endblock %}
+
+{% block body %}
+	<div class="page socket">
+		<h1>Socket index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for socket in sockets|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+
+					<tr>
+						<td>{{ socket.id }}</td>
+						<td>{{ socket.nom }}</td>
+						<td>
+							<a href="{{ path('app_socket_show', {'id': socket.id}) }}" class="btn btn-light btn-crud">afficher</a>
+							<a href="{{ path('app_socket_edit', {'id': socket.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_socket_new') }}" class="btn btn-primary btn-create bg-perso">Nouveau socket</a>
+
+	</div>
+
+{% endblock %}

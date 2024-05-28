@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle alimentation
+{% endblock %}
+
+{% block body %}
+	<div class="page alimentation">
+		<h1>Créer un nouvelle alimentation</h1>
+
+		{{ include('alimentation/_form.html.twig') }}
+
+		<a href="{{ path('app_alimentation_index') }}" class="btn btn-secondary">retour à la liste</a>
+	</div>
+
+{% endblock %}

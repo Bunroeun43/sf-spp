@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alimentation
+{% endblock %}
+
+{% block body %}
+	<div class="page alimentaion">
+		<h1>Alimentation</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ alimentation.id }}</td>
+				</tr>
+				<tr>
+					<th>Modele</th>
+					<td>{{ alimentation.modele }}</td>
+				</tr>
+				<tr>
+					<th>Puissance</th>
+					<td>{{ alimentation.puissance }}</td>
+				</tr>
+				<tr>
+					<th>Modulaire</th>
+					<td>{{ alimentation.modulaire ? 'Yes' : 'No' }}</td>
+				</tr>
+				<tr>
+					<th>Photo</th>
+					<td>{{ alimentation.photo }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_alimentation_index') }}" class="btn btn-primary btn-crud">retour à la liste</a>
+
+		<a href="{{ path('app_alimentation_edit', {'id': alimentation.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+
+		{{ include('alimentation/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

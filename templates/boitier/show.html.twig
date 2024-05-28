@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boitier
+{% endblock %}
+
+{% block body %}
+	<div class="page boitier">
+		<h1>Boitier</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Marque</th>
+					<td>{{ boitier.marque.nom }}</td>
+				</tr>
+				<tr>
+					<th>Modele</th>
+					<td>{{ boitier.modele }}</td>
+				</tr>
+				<tr>
+					<th>Format du boitier</th>
+					<td>{{ boitier.format.nom}}</td>
+				</tr>
+				<tr>
+					<th>Format carte mère</th>
+					<td>{{ boitier.formatcartemere.nom}}</td>
+				</tr>
+				<tr>
+					<th>Format de l'alimentation</th>
+					<td>{{ boitier.formatalimentation.nom }}</td>
+				</tr>
+				<tr>
+					<th>Prix</th>
+					<td>{{ boitier.prix }}
+						€</td>
+				</tr>
+				<tr>
+					<th>IsActive</th>
+					<td>{{ boitier.isActive ? 'Oui' : 'Non' }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_boitier_index') }}" class="btn btn-secondary btn-crud">retour à la liste</a>
+
+		<a href="{{ path('app_boitier_edit', {'id': boitier.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+
+		{{ include('boitier/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

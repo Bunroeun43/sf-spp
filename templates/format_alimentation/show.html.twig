@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormatAlimentation
+{% endblock %}
+
+{% block body %}
+	<div class="page formatalimentation">
+		<h1>FormatAlimentation</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ format_alimentation.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ format_alimentation.nom }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_format_alimentation_index') }}" class="btn btn-primary">retour à la liste</a>
+
+		<a href="{{ path('app_format_alimentation_edit', {'id': format_alimentation.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+
+		{{ include('format_alimentation/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

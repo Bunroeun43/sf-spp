@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Processeur
+{% endblock %}
+
+{% block body %}
+	<div class="page processeur">
+		<h1>Create new Processeur</h1>
+
+		{{ include('processeur/_form.html.twig') }}
+
+		<a href="{{ path('app_processeur_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

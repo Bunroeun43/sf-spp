@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pcie
+{% endblock %}
+
+{% block body %}
+	<div class="page pcie">
+		<h1>Pcie</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ pcie.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ pcie.nom }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_pcie_index') }}" class="btn btn-primary">retour à la liste</a>
+
+		<a href="{{ path('app_pcie_edit', {'id': pcie.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+
+		{{ include('pcie/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

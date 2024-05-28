@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Memoire
+{% endblock %}
+
+{% block body %}
+	<div class="page memoire">
+		<h1>Edit Memoire</h1>
+
+		{{ include('memoire/_form.html.twig', {'button_label': 'mettre à jour'}) }}
+
+
+		<a href="{{ path('app_memoire_index') }}" class="btn btn-primary">retour à la liste</a>
+
+
+		{{ include('memoire/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

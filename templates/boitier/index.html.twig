@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boitier index
+{% endblock %}
+
+{% block body %}
+	<div class="composant boitier">
+		<h1>Liste des boitiers</h1>
+
+		<div class="card-group">
+			{% for boitier in boitiers|sort((a, b) => a.marque.nom <=> b.marque.nom) %}
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+
+						<img src="{{ asset ('uploads/images/') }}{{ boitier.photo ? boitier.photo : "nc.png" }}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title text-center text-dark">{{ boitier.marque.nom|upper }}
+								<p>{{ boitier.modele|capitalize }}</p>
+							</h5>
+							{# <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> #}
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Format :
+								{{ boitier.format.nom }}</li>
+							<li class="list-group-item">Carte mère :
+								{{ boitier.formatcartemere.nom }}</li>
+							<li class="list-group-item">Alimentation :
+								{{ boitier.formatalimentation.nom }}</li>
+							<li class="list-group-item">Couleur :
+								{{ boitier.couleur ? boitier.couleur.nom : "NC" }}</li>
+							<li class="list-group-item">Prix :
+								{{ boitier.prix }}
+								€</li>
+						</ul>
+						<div class="card-body text-center">
+							<a href="{{ path('app_boitier_show', {'id': boitier.id}) }}" class="btn btn-light btn-crud">afficher</a>
+							<a href="{{ path('app_boitier_edit', {'id': boitier.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</div>
+					</div>
+				</div>
+				{% else %}
+			{% endfor %}
+		</div>
+		<div class="text-center">
+			<a href="{{ path('app_boitier_new') }}" class="btn btn-primary btn-create bg-perso">Nouveau boitier</a>
+		</div>
+	</div>
+
+{% endblock %}

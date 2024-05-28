@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypeMemoire
+{% endblock %}
+
+{% block body %}
+	<div class="page typememoire">
+		<h1>Create new TypeMemoire</h1>
+
+		{{ include('type_memoire/_form.html.twig') }}
+
+		<a href="{{ path('app_type_memoire_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

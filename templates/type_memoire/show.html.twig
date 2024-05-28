@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeMemoire
+{% endblock %}
+
+{% block body %}
+	<div class="page typememoire">
+		<h1>TypeMemoire</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ type_memoire.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ type_memoire.nom }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_type_memoire_index') }}" class="btn btn-primary">retour à la liste</a>
+
+		<a href="{{ path('app_type_memoire_edit', {'id': type_memoire.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+
+
+		{{ include('type_memoire/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

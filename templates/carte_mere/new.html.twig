@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une nouvelle carte mère
+{% endblock %}
+
+{% block body %}
+	<div class="page cartemere">
+		<h1>Créer une nouvelle carte mère</h1>
+
+		{{ include('carte_mere/_form.html.twig') }}
+
+		<a href="{{ path('app_carte_mere_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

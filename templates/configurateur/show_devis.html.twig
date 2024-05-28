@@ -1,0 +1,190 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Devis
+{% endblock %}
+
+{% block body %}
+	<div class="devis">
+		<div class="container">
+			<div class="row societe">
+				<div class="col align-self-start">
+					<p>Skill Perdormance PC</p>
+					<p></p>
+					<p></p>
+				</div>
+				<div class="col align-self-center">
+					<img src="{{ asset('img/logo/Logo.png') }}" alt="" srcset="" id="logo-devis">
+				</div>
+				<div class="col align-self-end text-end client">
+					<p>{{ app.user.prenom }}
+						{{ app.user.nom }}</p>
+					<p>{{ app.user.adresse }}</p>
+					<p>{{ app.user.codepostal }}
+						{{ app.user.ville }}</p>
+					<p>{{ app.user.telephone }}</p>
+				</div>
+			</div>
+		</div>
+
+
+		<h1>{{ configurateur.nom}}</h1>
+
+		<div class="client"></div>
+		{% set somme = 0 %}
+		<table class="table table-light table-striped table-hover">
+
+			<tr>
+				<th>Composant</th>
+				<th>Marque</th>
+				<th>Modèle</th>
+				<th>Prix</th>
+			</tr>
+			<tr>
+				<td>Carte Mere</td>
+				<td>{{ configurateur.cartemere.marque.nom }}</td>
+				<td>{{ configurateur.cartemere.modele }}</td>
+				<td class="text-end">{{ configurateur.cartemere.prix }}
+					€</td>
+			</tr>
+			{% set somme = somme + configurateur.cartemere.prix %}
+
+			<tr>
+				<td>Processeur</td>
+				<td>{{ configurateur.processeur.marque.nom }}</td>
+				<td>{{ configurateur.processeur.modele }}</td>
+				<td class="text-end">{{ configurateur.processeur.prix }}
+					€</td>
+			</tr>
+			{% set somme = somme + configurateur.processeur.prix %}
+			<tr>
+				<td>Mémoire</td>
+				<td>{{ configurateur.typememoire.marque.nom }}</td>
+				<td>{{ configurateur.typememoire.modele }}</td>
+				<td class="text-end">{{ configurateur.typememoire.prix }}
+					€</td>
+			</tr>
+			{% set somme = somme + configurateur.typememoire.prix %}
+			{% if configurateur.disquem2 %}
+				<tr>
+					<td>Disque M2</td>
+					<td>{{ configurateur.disquem2.marque.nom }}</td>
+					<td>{{ configurateur.disquem2.modele }}</td>
+					<td class="text-end">{{ configurateur.disquem2.prix }}
+						€</td>
+				</tr>
+				{% set somme = somme + configurateur.disquem2.prix %}
+			{% endif %}
+			<tr>
+				<td>Carte graphique</td>
+				<td>{{ configurateur.cartegraphique.marque.nom }}</td>
+				<td>{{ configurateur.cartegraphique.modele }}</td>
+				<td class="text-end">{{ configurateur.cartegraphique.prix }}
+					€</td>
+			</tr>
+			{% set somme = somme + configurateur.cartegraphique.prix %}
+			{% if configurateur.cartegraphique2 %}
+				<tr>
+					<td>Carte graphique secondaire</td>
+					<td>{{ configurateur.cartegraphique2.marque.nom }}</td>
+					<td>{{ configurateur.cartegraphique2.modele }}</td>
+					<td class="text-end">{{ configurateur.cartegraphique2.prix }}
+						€</td>
+				</tr>
+				{% set somme = somme + configurateur.cartegraphique2.prix %}
+			{% endif %}
+			{% if configurateur.disquem2 %}
+				<tr>
+					<td>Disque SSD</td>
+					<td>{{ configurateur.disquem2.marque.nom }}</td>
+					<td>{{ configurateur.disquem2.modele }}</td>
+					<td class="text-end">{{ configurateur.disquem2.prix }}
+						€</td>
+				</tr>
+				{% set somme = somme + configurateur.disquem2.prix %}
+			{% endif %}
+			{% if configurateur.disquedur %}
+				<tr>
+					<td>Disque dur</td>
+					<td>{{ configurateur.disquedur.marque.nom }}</td>
+					<td>{{ configurateur.disquedur.modele }}</td>
+					<td class="text-end">{{ configurateur.disquedur.prix }}
+						€</td>
+				</tr>
+				<tr>
+					<td>Quantité</td>
+					<td></td>
+					<td>{{ configurateur.quantitedisquedur ? configurateur.quantitedisquedur : 0 }}</td>
+					<td class="text-end">{{ configurateur.disquedur.prix * configurateur.quantitedisquedur }}
+						€</td>
+				</tr>
+				{% set somme = somme + ( configurateur.disquedur.prix * configurateur.quantitedisquedur )%}
+			{% endif %}
+
+
+			<tr>
+				<td>Alimentation</td>
+				<td>{{ configurateur.alimentation.marque.nom }}</td>
+				<td>{{ configurateur.alimentation.modele }}</td>
+				<td class="text-end">{{ configurateur.alimentation.prix }}
+					€</td>
+			</tr>
+			<tr>
+				<td>Boitier</td>
+				<td>{{ configurateur.boitier.marque.nom }}</td>
+				<td>{{ configurateur.boitier.modele }}</td>
+				<td class="text-end">{{ configurateur.boitier.prix }}
+					€</td>
+			</tr>
+			{# {% set somme = ( configurateur.cartemere.prix + configurateur.processeur.prix + configurateur.typememoire.prix + (configurateur.disquem2 ? configurateur.disquem2.prix : 0) + configurateur.cartegraphique.prix + (configurateur.disquessd ? configurateur.disquessd.prix : 0) + ((configurateur.disquedur ? configurateur.disquedur.prix : 0) * configurateur.quantitedisquedur) + configurateur.alimentation.prix + configurateur.boitier.prix )
+																																																																																																																																																																																																																																																																																																																																				%} #}
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="text-end">Total :
+				</td>
+				<td class="text-end">{{ somme }}
+					€</td>
+			</tr>
+			{% set montage = 49 %}
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="text-end">forfait montage</td>
+				<td class="text-end">{{ montage }}
+					€</td>
+			</tr>
+			{% set somme = somme + montage %}
+			{% set tva = 20.6 %}</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td class="text-end">tva
+			{{ tva }}
+			%</td>
+		<td class="text-end">{{ ( somme * tva / 100 )|number_format(2) }}
+			€</td>
+
+	</tr>
+	{% set somme = somme + ( somme * tva / 100 ) %}
+	<tr>
+		<td></td>
+		<td></td>
+		<td class="text-end">montant total</td>
+		<td class="text-end">{{ somme|number_format(2) }}
+			€</td>
+	</tr>
+</td></tr></table>{# {{ include('devis/_form.html.twig', {'button_label': 'Sauvegarder'}) }} #}</div>{% endblock %}

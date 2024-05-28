@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Processeur
+{% endblock %}
+
+{% block body %}
+	<div class="page processeur">
+		<h1>Processeur</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ processeur.id }}</td>
+				</tr>
+				<tr>
+					<th>Modele</th>
+					<td>{{ processeur.modele }}</td>
+				</tr>
+				<tr>
+					<th>Coeur</th>
+					<td>{{ processeur.coeur }}</td>
+				</tr>
+				<tr>
+					<th>Cache</th>
+					<td>{{ processeur.cache }}</td>
+				</tr>
+				<tr>
+					<th>Frequence</th>
+					<td>{{ processeur.frequence }}</td>
+				</tr>
+				<tr>
+					<th>Prix</th>
+					<td>{{ processeur.prix }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_processeur_index') }}" class="btn btn-primary">retour à la liste</a>
+
+		<a href="{{ path('app_processeur_edit', {'id': processeur.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+
+		{{ include('processeur/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

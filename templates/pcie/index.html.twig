@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pcie index
+{% endblock %}
+
+{% block body %}
+	<div class="page pcie">
+		<h1>Pcie index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for pcie in pcies|sort((a, b) => a.nom <=> b.nom) %}
+
+					<tr>
+						<td>{{ pcie.id }}</td>
+						<td>{{ pcie.nom }}</td>
+						<td>
+							<a href="{{ path('app_pcie_show', {'id': pcie.id}) }}" class="btn btn-secondary btn-crud">afficher</a>
+							<a href="{{ path('app_pcie_edit', {'id': pcie.id}) }}" class="btn btn-warning btn-crud">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_pcie_new') }}" class="btn btn-primary btn-create">Nouveau pci-e</a>
+
+	</div>
+
+{% endblock %}

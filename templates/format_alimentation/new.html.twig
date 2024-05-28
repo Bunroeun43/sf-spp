@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FormatAlimentation
+{% endblock %}
+
+{% block body %}
+	<div class="page formatalimentation">
+		<h1>Create new FormatAlimentation</h1>
+
+		{{ include('format_alimentation/_form.html.twig') }}
+
+		<a href="{{ path('app_format_alimentation_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}

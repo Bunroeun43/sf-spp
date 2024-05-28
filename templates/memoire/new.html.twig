@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Memoire
+{% endblock %}
+
+{% block body %}
+	<div class="page memoire">
+		<h1>Create new Memoire</h1>
+
+		{{ include('memoire/_form.html.twig') }}
+
+		<a href="{{ path('app_memoire_index') }}" class="btn btn-secondary">retour à la liste</a>
+
+	</div>
+
+{% endblock %}
